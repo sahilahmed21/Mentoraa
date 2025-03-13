@@ -8,14 +8,6 @@
 - [API Integration](#api-integration)
 - [Usage Guide](#usage-guide)
 - [Contributing](#contributing)
-- [License](#license)
-
-## Demo
-
-
-
-https://github.com/user-attachments/assets/1ea26947-1dca-408d-9741-b24c3429944a
-
 
 
 ## Overview
@@ -109,7 +101,7 @@ mentora is an intelligent study companion that leverages AI to transform the lea
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/KartikLabhshetwar/mentora
+git clone https://github.com/sahilahmed21/Mentoraa
 cd mentora
 ```
 
@@ -216,11 +208,3 @@ We welcome contributions! Please follow these steps:
 3. Commit your changes
 4. Push to your branch
 5. Create a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Built with 💡 by Kartik Labhshetwar
