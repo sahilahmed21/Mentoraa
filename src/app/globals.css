@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Palette */
+    --background: #393E46; /* Dark gray for background */
+    --foreground: #EEEEEE; /* Light text for readability */
+    --card: #222831; /* Darker shade for cards */
+    --card-foreground: #EEEEEE;
+    --popover: #222831;
+    --popover-foreground: #EEEEEE;
+    --primary: #00ADB5; /* Teal for key elements */
+    --primary-foreground: #EEEEEE;
+    --secondary: #A6B1E1; /* Muted purple for subtle accents */
+    --secondary-foreground: #222831;
+    --muted: #A6B1E1;
+    --muted-foreground: rgba(238, 238, 238, 0.6); /* 60% light text */
+    --accent: #00ADB5;
+    --accent-foreground: #EEEEEE;
+    --destructive: #b9004b;
+    --destructive-foreground: #EEEEEE;
+    --border: #00ADB5;
+    --input: #222831;
+    --ring: #00ADB5;
+    --radius: 0.75rem; /* Modern, soft corners */
+  }
+
+  .dark {
+    /* Dark mode tweaks - already dark scheme, so minimal changes */
+    --background: #222831; /* Even darker background in dark mode */
+    --foreground: #EEEEEE; /* Light text */
+    --card: #393E46; /* Slightly lighter cards in dark mode */
+    --card-foreground: #EEEEEE;
+    --popover: #393E46;
+    --popover-foreground: #EEEEEE;
+    --primary: #00ADB5;
+    --primary-foreground: #EEEEEE;
+    --secondary: #A6B1E1;
+    --secondary-foreground: #EEEEEE;
+    --muted: #A6B1E1;
+    --muted-foreground: rgba(238, 238, 238, 0.6);
+    --accent: #00ADB5;
+    --accent-foreground: #EEEEEE;
+    --destructive: #ff6b9a;
+    --destructive-foreground: #EEEEEE;
+    --border: #00ADB5;
+    --input: #393E46;
+    --ring: #00ADB5;
+  }
+}
+
+/* Base Styles */
+body {
+  @apply bg-background text-foreground;
+  font-family: 'Poppins', 'Montserrat', sans-serif;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold text-foreground;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  @apply text-4xl md:text-5xl leading-tight;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl leading-snug;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl leading-snug;
+}
+
+h4 {
+  @apply text-xl md:text-2xl leading-relaxed;
+}
+
+p {
+  @apply text-base md:text-lg leading-relaxed;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary;
+}
+
+/* Hover Effects */
+.hover-highlight {
+  @apply transition-colors duration-200;
+}
+
+.hover-highlight:hover {
+  @apply bg-primary/20;
+}
+
+/* Focus Styles */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes messageIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message-in {
+  animation: messageIn 0.3s ease-out forwards;
+}
+
+/* Button Styles */
+.pill-hover {
+  @apply transition-all duration-200 rounded-full;
+}
+
+.pill-hover:hover {
+  @apply translate-y-[-2px] shadow-md;
+  box-shadow: 0 4px 12px rgba(0, 173, 181, 0.3); /* Enhanced teal shadow */
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
