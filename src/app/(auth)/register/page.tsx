@@ -23,7 +23,7 @@ export default function RegisterPage() {
           Welcome to mentora
         </h2>
         <p className="mt-2 text-center text-xs sm:text-sm text-muted-foreground">
-          Let's get started with your study journey
+          Let&apos;s get started with your study journey
         </p>
       </div>
       <div className="w-full max-w-md">
@@ -31,7 +31,7 @@ export default function RegisterPage() {
           <h1 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6">Create your account</h1>
           <SignUpForm />
           <p className="mt-4 text-center text-xs sm:text-sm text-muted-foreground">
-            Already have an account?{' '}
+            Already have an account?&nbsp;
             <Link href="/signin" className="text-primary hover:text-primary/80 hover:underline">
               Sign in
             </Link>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { Card } from "@/components/ui/card";
@@ -25,16 +25,8 @@ export default function PdfListPage() {
   const { toast } = useToast();
   const { status } = useSession();
 
-  // Load documents on mount and when auth status changes
-  useEffect(() => {
-    if (status === 'authenticated') {
-      fetchDocuments();
-    }
-  }, [status]);
-
-  const fetchDocuments = async () => {
+  const fetchDocuments = useCallback(async () => {
     try {
-      // Don't fetch if not authenticated
       if (status !== 'authenticated') {
         setDocuments([]);
         setIsLoading(false);
@@ -47,7 +39,6 @@ export default function PdfListPage() {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        // Ensure we're not using cached responses
         cache: 'no-store',
       });
 
@@ -70,7 +61,13 @@ export default function PdfListPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [status, toast]);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      fetchDocuments();
+    }
+  }, [status, fetchDocuments]);
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -85,7 +82,7 @@ export default function PdfListPage() {
       return;
     }
 
-    if (file.size > 10 * 1024 * 1024) { // 10MB limit
+    if (file.size > 10 * 1024 * 1024) {
       toast({
         title: "Error",
         description: "File size must be less than 10MB",
@@ -134,7 +131,6 @@ export default function PdfListPage() {
       });
     } finally {
       setIsUploading(false);
-      // Clear the input
       event.target.value = '';
     }
   };
@@ -189,7 +185,6 @@ export default function PdfListPage() {
   return (
     <div className="container mx-auto p-6 max-w-7xl bg-[#393E46] text-[#EEEEEE]">
       <div className="flex flex-col space-y-6">
-        {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <h1 className="text-3xl font-bold text-[#EEEEEE]">Scriba</h1>
           <div className="flex items-center gap-4">
@@ -220,7 +215,6 @@ export default function PdfListPage() {
           </div>
         </div>
 
-        {/* Content */}
         <div className="min-h-[calc(100vh-16rem)] bg-[#222831] rounded-lg">
           {isLoading ? (
             <div className="flex justify-center items-center h-[calc(100vh-16rem)]">

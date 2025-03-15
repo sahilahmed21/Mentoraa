@@ -23,7 +23,7 @@ export default function SignInPage() {
           Welcome to mentora
         </h2>
         <p className="mt-2 text-center text-xs sm:text-sm text-muted-foreground">
-          Let's get started with your study journey
+          Let&apos;s get started with your study journey
         </p>
       </div>
 
@@ -31,7 +31,7 @@ export default function SignInPage() {
         <div className="bg-card px-4 sm:px-10 py-6 sm:py-8 shadow rounded-lg sm:rounded-lg border-2 border-border">
           <SignInForm />
           <p className="mt-4 text-center text-xs sm:text-sm text-muted-foreground">
-            Don't have an account?{' '}
+            Don&apos;t have an account?&nbsp;
             <Link href="/register" className="text-primary hover:text-primary/80 hover:underline">
               Sign up
             </Link>

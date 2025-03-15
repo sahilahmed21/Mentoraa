@@ -173,7 +173,7 @@ export default function DashboardHome() {
                   cy: isMobile ? 10 : isTablet ? 14 : 20,
                   cr: isMobile ? 2.5 : isTablet ? 3.5 : 4,
                   textColor: '#EEEEEE',
-                  backgroundColor: '#222831',
+                  // backgroundColor: '#222831',
                 }}
                 visibilityOptions={{
                   hideDescription: isMobile || isTablet,
